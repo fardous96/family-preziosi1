@@ -1,0 +1,88 @@
+{
+  "theme": "dark",
+  "archetype": "The Performance Pro / Swiss Brutalist (Industrial Variant)",
+  "typography": {
+    "fonts": {
+      "heading": "Chivo",
+      "body": "IBM Plex Sans",
+      "mono": "IBM Plex Mono"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-semibold",
+      "body": "text-base lg:text-lg leading-relaxed",
+      "label": "text-sm font-semibold uppercase tracking-[0.1em]",
+      "scan_station_display": "text-6xl font-black tracking-tighter"
+    },
+    "installation": "Ensure fonts are imported from Google Fonts."
+  },
+  "colors": {
+    "background": "bg-zinc-950",
+    "surface": "bg-zinc-900",
+    "surface_elevated": "bg-zinc-800",
+    "text_primary": "text-zinc-50",
+    "text_secondary": "text-zinc-400",
+    "border": "border-zinc-800",
+    "primary": {
+      "base": "bg-blue-600",
+      "hover": "hover:bg-blue-500",
+      "text": "text-white"
+    },
+    "status": {
+      "to_start": "bg-zinc-600 text-white border-zinc-500",
+      "in_progress": "bg-amber-500 text-zinc-950 border-amber-400",
+      "completed": "bg-emerald-500 text-white border-emerald-400",
+      "error": "bg-red-500 text-white border-red-400"
+    },
+    "rules": [
+      "Use high contrast. Workshop environments require maximum legibility.",
+      "Avoid subtle gradients. Use solid colors with distinct borders.",
+      "Never use pure black #000000. Zinc-950 gives a sophisticated industrial feel."
+    ]
+  },
+  "layouts": {
+    "general": "Responsive sidebar layout for Admin/Capo. Full-screen dedicated layout for Scan Station (Dipendenti).",
+    "admin_dashboard": "Bento grid for metrics, full-width data tables for orders.",
+    "scan_station": "Massive centered UI. Huge buttons, prominent status indicators. Designed for touchscreens and quick visual confirmation from a distance.",
+    "spacing": "Use p-6 to p-8 for admin panels. Use p-12 to p-16 for Scan Station elements."
+  },
+  "components": {
+    "buttons": "Pill-shaped or slightly rounded (rounded-md). Massive scale (h-20, text-2xl) for Scan Station Start/Stop actions.",
+    "cards": "Flat solid surfaces (bg-zinc-900), 1px border (border-zinc-800). No soft shadows, use crisp borders.",
+    "inputs": "High contrast inputs. bg-zinc-950, distinct borders. Large text for easy reading.",
+    "tables": "Dense rows but highly legible. Clear hover states (hover:bg-zinc-800/50).",
+    "badges": "Use for status. Bright, solid colors, uppercase text, bold."
+  },
+  "icons": {
+    "library": "lucide-react",
+    "usage": "Use thick, readable icons (strokeWidth={2.5}). Large sizes for the Scan Station."
+  },
+  "images": {
+    "login_background": {
+      "url": "https://images.unsplash.com/photo-1717386255773-1e3037c81788?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwZmFjdG9yeSUyMGZsb29yfGVufDB8fHx8MTc4MzY4OTE4NXww&ixlib=rb-4.1.0&q=85",
+      "description": "Modern factory floor, suitable for an industrial login screen background with a dark overlay."
+    }
+  },
+  "visual_enhancers": {
+    "scan_station": "Use a subtle pulsing animation on the 'In Progress' state. Use green flashes for successful barcode scans, red flashes for errors.",
+    "surfaces": "Grid Borders (The Technical Look) for the admin dashboard. Expose the skeleton."
+  },
+  "instructions_to_main_agent": [
+    "Build a robust sidebar navigation for the 'Capo' role (Dashboard, Ordini, Report).",
+    "Build a dedicated, full-screen route for the 'Scan Station' (Dipendenti). This screen must be highly visible from afar, with huge fonts and buttons.",
+    "Implement Shadcn UI for standard elements (Tables, Dialogs, Forms) but heavily customize the Scan Station to use native massive Tailwind classes.",
+    "Use Recharts for the Dashboard (Ore lavorate, Pezzi prodotti). Ensure charts use the dark theme colors (zinc, blue, amber, emerald).",
+    "All interactive elements MUST have data-testid attributes.",
+    "The application language is Italian (Ordini di Produzione, Schede di Lavorazione, Inizia, Ferma, ecc.).",
+    "Mock the barcode scanning by providing an input field that auto-submits on 'Enter' (typical barcode scanner behavior)."
+  ],
+  "universal_guidelines_for_main_agent": [
+    "Do not center align standard text unless specifically in the Scan Station hero area.",
+    "Ensure glassmorphism or overlays are fully readable (use bg-zinc-900/90 with backdrop-blur).",
+    "Never use generic AI emojis.",
+    "Apply precise hover/focus states to all buttons, ensuring contrast increases.",
+    "Toast notifications (sonner) should be used for successful scans or errors in the Scan Station.",
+    "Use 2x normal spacing. Industrial interfaces need to prevent accidental misclicks."
+  ]
+}

@@ -1,0 +1,43 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: avanzamento-mongo
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    # Decommenta per accedere al DB dall'host (utile per debug)
+    # ports:
+    #   - "27017:27017"
+
+  backend:
+    build: ./backend
+    container_name: avanzamento-backend
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URL: "mongodb://mongo:27017"
+      DB_NAME: "avanzamento_produzione"
+      CORS_ORIGINS: "*"
+      STORAGE_DIR: "/data/uploads"
+    volumes:
+      - uploads_data:/data/uploads
+    ports:
+      - "8001:8001"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Vuoto = stesso dominio del frontend (Nginx inoltra /api al backend).
+        REACT_APP_BACKEND_URL: ""
+    container_name: avanzamento-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  mongo_data:
+  uploads_data:
